@@ -21,7 +21,7 @@ void setup() {
 }
 
 void loop () {
-  http.begin("http://kawalcorona.com");
+  http.begin("https://api.kawalcorona.com/indonesia/provinsi/");
   int httpCode = http.GET();
 
   if (httpCode > 0)
