@@ -1,6 +1,7 @@
 #include <ArduinoJson.h>
 #include <ESP8266HTTPClient.h>
 #include <ESP8266WiFi.h>
+//#include <led.h>
 
 const char* ssid = "b4871e";
 const char* pass = "277123586";
@@ -26,8 +27,8 @@ void loop () {
 
   if (httpCode > 0)
   {
-    char json[];
-    const char* payload = http.getString();
+    char json[500];
+//    const char* payload = http.getString();
     StaticJsonDocument<256> doc;
     payload.toCharArray(doc, json);
     deserializeJson(doc,json);
@@ -40,4 +41,6 @@ void loop () {
   
   http.end();
   delay(2000);
+
+  test_led(2,200);
 }
