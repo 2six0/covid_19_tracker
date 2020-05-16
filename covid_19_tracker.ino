@@ -6,7 +6,8 @@
 const char* ssid = "b4871e";
 const char* pass = "277123586";
 
-HTTPClient http;
+const size_t capacity = JSON_OBJECT_SIZE(5) + 90;
+DynamicJsonDocument doc(capacity);
 
 void setup() {
   Serial.begin(9600);
@@ -18,14 +19,12 @@ void setup() {
 }
 
 void loop () {
-  if (WiFi.status() == WL_CONNECTED) {
-    http.begin("https://api.kawalcorona.com/indonesia/");
-    int httpCode = http.GET();
-    if (httpCode > 0) {
-      String payload = http.getString();
-      Serial.println(payload);
-    }
-    http.end();
-  }
-  delay(2000);
+ HTTPClient http;
+ http.begin("https://api.kawalcorona.com/indonesia/");
+ int httpCode = http.GET();
+ if(httpCode > 0) {
+  String payload = http.getString();
+  Serial.println(payload);
+ }
+ http.end();
 }
