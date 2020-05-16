@@ -28,7 +28,7 @@ void loop () {
   if (httpCode > 0)
   {
     char json[500];
-//    const char* payload = http.getString();
+    const char* payload = http.getString();
     StaticJsonDocument<256> doc;
     payload.toCharArray(doc, json);
     deserializeJson(doc,json);
@@ -42,5 +42,5 @@ void loop () {
   http.end();
   delay(2000);
 
-  test_led(2,200);
+ // test_led(2,200);
 }
