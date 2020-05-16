@@ -16,6 +16,7 @@ void setup() {
     Serial.println(".");
     delay(200);
   }
+  
 }
 
 void loop () {
@@ -23,8 +24,10 @@ void loop () {
  http.begin("https://api.kawalcorona.com/indonesia/");
  int httpCode = http.GET();
  if(httpCode > 0) {
+  Serial.println("Connect Wth Internet");
   String payload = http.getString();
   Serial.println(payload);
  }
  http.end();
+ Serial.println("https end")
 }
