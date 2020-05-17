@@ -24,7 +24,7 @@ void loop () {
  http.begin("https://api.kawalcorona.com/indonesia/");
  int httpCode = http.GET();
  if(httpCode > 0) {
-  Serial.println("Connect Wth Internet");
+  Serial.println("Connect With Internet");
   String payload = http.getString();
   Serial.println(payload);
  }
